@@ -20,9 +20,61 @@ namespace VisorDeFuentes
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
         }
+
+        private void fuenteComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (fuenteComboBox.SelectedItem != null)
+            {
+                String fuente = (string)(fuenteComboBox.SelectedItem as ComboBoxItem).Content;
+                leyendaTexBlock.FontFamily = new FontFamily(familyName: fuente);
+            }
+
+        }
+
+        private void cursivaCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            leyendaTexBlock.FontStyle = FontStyles.Italic;
+
+        }
+
+        private void cursivaCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            leyendaTexBlock.FontStyle = FontStyles.Normal;
+        }
+
+        private void negritasCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            leyendaTexBlock.FontWeight = FontWeights.Bold;
+        }
+
+        private void negritasCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            leyendaTexBlock.FontWeight = FontWeights.Normal;
+        }
+
+        private void tamanioRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            if (smallRadioButton.IsChecked == true)
+            {
+                leyendaTexBlock.FontSize = 12;
+
+            }
+            else if (mediumRadioButton.IsChecked==true)
+            {
+                leyendaTexBlock.FontSize = 18;
+            }
+            else
+            {
+                leyendaTexBlock.FontSize = 24;
+            }
+
+
+        }
     }
+    
 }
